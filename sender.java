@@ -5,6 +5,7 @@ public class sender{
 	private String rHost, fileName;
 	private int rPort, sPort, MDS, timeout;//r for receiver, s for sender
 	private boolean running;
+	private byte[] buf = new byte[256];
 	
 	public static void main(String[] args) throws Exception{
 		rHost = args[0];
@@ -16,9 +17,6 @@ public class sender{
 		
 		DatagramSocket socket = new DatagramSocket(sPort);
 		
-		while(true){
-			senderThread thread = new senderThread(rHost, rPort, sPort, fileName, MDS, timeout);
-			senderThread.start();
-		}
+		
 	}
 }
