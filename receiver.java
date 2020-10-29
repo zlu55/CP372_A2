@@ -14,7 +14,6 @@ public class receiver{
 	private JButton receiveButton;
 	private JToggleButton relButton, unrelButton;
 	public boolean reliability = true;//True for reliable, False for unreliable
-	private connection newConnect;
 	
 	public static void main(String[] args){
 		receiver newReceiver = new receiver();
@@ -23,7 +22,6 @@ public class receiver{
 	}
 	
 	public void setUpGUI(){
-		newConnect = new connection();
 		frame = new JFrame("CP372 A1 - Zachary Luloff/Mitchell Mactaggart");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -174,7 +172,6 @@ public class receiver{
 			outputBox.setText("Please enter file name");
 		}else{
 			outputBox.setText("");
-			
 			
 		}
 	}
