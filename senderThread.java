@@ -2,6 +2,7 @@
 public class senderThread extends Thread{
 	private String rHost, fileName;
 	private int rPort, sPort, MDS, timeout;//r for receiver, s for sender
+	private byte[] buf = new byte[256];
 	
 	
 	public senderThread(String rHost, int rPort, int sPort, String fileName, int MDS, int timeout){

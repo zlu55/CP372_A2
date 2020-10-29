@@ -171,9 +171,13 @@ public class receiver{
 		}else if(fileName.equals("")){
 			outputBox.setText("Please enter file name");
 		}else{
-			outputBox.setText("");
-			
+			outputBox.setText(getInfo());
 		}
+	}
+	
+	public String getInfo(){
+		
+		return "";
 	}
 	
 }
