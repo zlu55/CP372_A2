@@ -12,5 +12,8 @@ public class sender{
 		fileName = args[3];
 		MDS = args[4];//MDS = Max data size
 		timeout = args[5];
+		
+		DatagramSocket socket = new DatagramSocket(sPort);
+		
 	}
 }
