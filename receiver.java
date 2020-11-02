@@ -18,7 +18,7 @@ public class receiver{
 	public static void main(String[] args){
 		receiver newReceiver = new receiver();
 		newReceiver.setUpGUI();
-		
+		receiveConnection rConn = new receiveConnection();
 	}
 	
 	public void setUpGUI(){
@@ -175,9 +175,5 @@ public class receiver{
 		}
 	}
 	
-	public String getInfo(){
-		
-		return "";
-	}
 	
 }
