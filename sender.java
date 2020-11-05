@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class sender{
 	
-	private String rHost, fileName;
-	private int rPort, sPort, MDS, timeout;//r for receiver, s for sender
-	private boolean running;
-	private byte[] buf = new byte[256];
 	
 	public static void main(String[] args) throws Exception{
+		String rHost, fileName;
+		int rPort, sPort, MDS, timeout;//r for receiver, s for sender
+		boolean running;
+		byte[] buf = new byte[1024];
+		
 		if(args.length != 6){
 			System.out.println("Incorrect number of arguments\n");
 			System.exit(0);
@@ -22,15 +23,13 @@ public class sender{
 			MDS = Integer.parseInt(args[4]);//MDS = Max data size
 			timeout = Integer.parseInt(args[5]);
 			
-			byte buf = new byte[1024];
 			
-			
-			DatagramSocket socket = new DatagramSocket(sPort);
-			socket.bind(new InetSocketAddress(ip, sPort));
+			DatagramSocket socket = new DatagramSocket();
+			socket.bind(new InetSocketAddress(rHost, sPort));
 			socket.setSoTimeout(timeout);
-			DatagramPacket packet = DatagramPacket(buf, 1024);
+			DatagramPacket packet = new DatagramPacket(buf, 1024);
 
-			String fileData = readFile(filename);
+			String fileData = readFile(fileName);
 
 			System.out.println("Sending datagram from " + fileName);
 			System.out.println("Address: " + rHost);
@@ -52,11 +51,11 @@ public class sender{
 		Scanner scanFile;
 
 		try{
-			scanFile = new Scanner(new File(filename));
+			scanFile = new Scanner(new File(fileName));
 			
-			while (scanner.hasNextLine()) {
-				lines.append(scanner.nextLine())
-				lines.append("\n")
+			while (scanFile.hasNextLine()) {
+				lines.append(scanFile.nextLine());
+				lines.append("\n");
 			}
 			scanFile.close();
 
@@ -65,6 +64,6 @@ public class sender{
 			System.exit(0);
 		}
 
-		return scanFile.toString();
+		return lines.toString();//scanFile.toString();
 	}
 }

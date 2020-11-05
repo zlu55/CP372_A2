@@ -14,14 +14,16 @@ public class receiver{
 	private JButton receiveButton;
 	private JToggleButton relButton, unrelButton;
 	public boolean reliability = true;//True for reliable, False for unreliable
+	private receiveConnection rConn;
 	
 	public static void main(String[] args){
 		receiver newReceiver = new receiver();
 		newReceiver.setUpGUI();
-		receiveConnection rConn = new receiveConnection();
+		
 	}
 	
 	public void setUpGUI(){
+		rConn = new receiveConnection();
 		frame = new JFrame("CP372 A1 - Zachary Luloff/Mitchell Mactaggart");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -171,7 +173,13 @@ public class receiver{
 		}else if(fileName.equals("")){
 			outputBox.setText("Please enter file name");
 		}else{
-			outputBox.setText(getInfo());
+			outputBox.setText("Receiving...");
+			try{
+				rConn.start(IP, sPort, rPort, fileName, reliability);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
 		}
 	}
 	
