@@ -49,7 +49,9 @@ public class receiveConnection{
 		socket.close();
 	}
 	
-	
+	public void stop(){
+		socket.close();
+	}
 	
 	
 	

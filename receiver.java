@@ -144,42 +144,41 @@ public class receiver{
 	
 	
 	private void receiveInfo(ActionEvent event){
-		int sPort = 0;
-		if(senderPortTxt.getText().length() > 0){
-			try{
-				sPort = Integer.parseInt(senderPortTxt.getText());
-			}catch(NumberFormatException e){
-				outputBox.setText("Please enter a correct port number for sender");
-			}
-		}
-		int rPort = 0;
-		if(receiverPortTxt.getText().length() > 0){
-			try{
-				rPort = Integer.parseInt(receiverPortTxt.getText());
-			}catch(NumberFormatException e){
-				outputBox.setText("Please enter a correct port number for receiver");
-			}
-		}
+		if(receiveButton.getText().equals("Receive")){
 		
-		String IP = IPTxtField.getText();
-		String fileName = fileTxt.getText();
+			int sPort = Integer.parseInt(senderPortTxt.getText());
+			int rPort = Integer.parseInt(receiverPortTxt.getText());
+			String IP = IPTxtField.getText();
+			String fileName = fileTxt.getText();
 
-		if(sPort == 0){
-			outputBox.setText("Please enter sender port number");
-		}else if(rPort == 0){
-			outputBox.setText("Please enter receiver port number");
-		}else if(IP.equals("")){
-			outputBox.setText("Please enter IP address");
-		}else if(fileName.equals("")){
-			outputBox.setText("Please enter file name");
-		}else{
-			outputBox.setText("Receiving...");
-			try{
-				rConn.start(IP, sPort, rPort, fileName, reliability);
-			}catch(Exception e){
-				e.printStackTrace();
+			if(sPort == 0){
+				outputBox.setText("Please enter sender port number");
+			}else if(rPort == 0){
+				outputBox.setText("Please enter receiver port number");
+			}else if(IP.equals("")){
+				outputBox.setText("Please enter IP address");
+			}else if(fileName.equals("")){
+				outputBox.setText("Please enter file name");
+			}else{
+				
+				new SwingWorker<Void, Void>() {
+					@Override
+					public Void doInBackground() {
+						try {
+							//receiverHandler.setInOrderPacketLabel(lblPacketsReceived);
+							rConn.start(IP, sPort, rPort, fileName, reliability);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						return null;
+					}
+				}.execute();
+				receiveButton.setText("Receiving...");
+				
 			}
-			
+		}else{
+			receiveButton.setText("Receive");
+			rConn.stop();
 		}
 	}
 	
