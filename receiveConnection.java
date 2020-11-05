@@ -26,11 +26,20 @@ public class receiveConnection{
 				System.out.println("Waiting");
 				
 				socket.receive(packet);
+				packetCounter++;
+				
 				
 				if(reliability || packetCounter % 10 != 0){
 					String s = new String(packet.getData(), 0, packet.getLength());
 					System.out.println(s);
 				}
+				int seqNum = packet.getData()[packet.getLength() - 1];
+				
+				
+				//Send ACK
+				String ACK = "ACK " + seqNum;
+				socket.send(new DatagramPacket(ACK.getBytes(), ACK.getBytes().length, InetAddress.getByName(IP), sPort));
+				
 				
 			}catch(IOException e){
 				break;
