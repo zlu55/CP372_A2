@@ -26,9 +26,17 @@ public class sender{
 			
 			
 			DatagramSocket socket = new DatagramSocket(sPort);
+			socket.bind(new InetSocketAddress(ip, sPort));
+			socket.setSoTimeout(timeout);
 			DatagramPacket packet = DatagramPacket(buf, 1024);
-			
-			
+
+			String fileData = readFile(filename);
+
+			System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
 			
 		}catch(NumberFormatException e){
 			System.out.println("Incorrect argument types");
@@ -36,5 +44,27 @@ public class sender{
 		}
 		
 		
+	}
+
+	public static String readFile(String fileName){
+		
+		StringBuilder lines = new StringBuilder();
+		Scanner scanFile;
+
+		try{
+			scanFile = new Scanner(new File(filename));
+			
+			while (scanner.hasNextLine()) {
+				lines.append(scanner.nextLine())
+				lines.append("\n")
+			}
+			scanFile.close();
+
+		}catch(FileNotFoundException e) {
+			System.out.println("File is Invaild, cannot be found.");
+			System.exit(0);
+		}
+
+		return scanFile.toString();
 	}
 }
