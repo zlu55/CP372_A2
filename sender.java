@@ -95,7 +95,7 @@ public class sender{
 			System.exit(0);
 		}
 
-		return lines.toString();//scanFile.toString();
+		return lines.toString();
 	}
 
 }
