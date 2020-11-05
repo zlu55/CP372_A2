@@ -7,7 +7,7 @@ public class receiveConnection{
 	private byte[] buf;
 	private int packetCounter;
 	
-	public void start(String IP, int sPort, int rPort, String outFile, boolean reliability) throws IOException{
+	public void start(String IP, int sPort, int rPort, String outFile, boolean reliability, JTextArea displayACK) throws IOException{
 		System.out.println("Receiving...");
 		
 		socket = new DatagramSocket(null);
@@ -34,7 +34,7 @@ public class receiveConnection{
 					System.out.println(s);
 				}
 				int seqNum = packet.getData()[packet.getLength() - 1];
-				
+				displayACK.setText(""+seqNum);
 				
 				//Send ACK
 				String ACK = "ACK " + seqNum;

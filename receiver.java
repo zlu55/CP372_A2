@@ -166,7 +166,7 @@ public class receiver{
 					public Void doInBackground() {
 						try {
 							//receiverHandler.setInOrderPacketLabel(lblPacketsReceived);
-							rConn.start(IP, sPort, rPort, fileName, reliability);
+							rConn.start(IP, sPort, rPort, fileName, reliability, outputBox);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
