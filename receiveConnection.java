@@ -39,7 +39,7 @@ public class receiveConnection{
 				//Send ACK
 				String ACK = "ACK " + seqNum;
 				socket.send(new DatagramPacket(ACK.getBytes(), ACK.getBytes().length, InetAddress.getByName(IP), sPort));
-				
+				System.out.println("Receiving ACK " + seqNum);
 				
 			}catch(IOException e){
 				break;
