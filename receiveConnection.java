@@ -8,8 +8,9 @@ public class receiveConnection{
 	private int packetCounter;
 	
 	public void start(String IP, int sPort, int rPort, String outFile, boolean reliability) throws IOException{
-		System.out.println("Receiveing...");
+		System.out.println("Receiving...");
 		
+		socket = new DatagramSocket(null);
 		socket.bind(new InetSocketAddress(IP, rPort));
 		buf = new byte[1024];
 		DatagramPacket packet = new DatagramPacket(buf, 1024);

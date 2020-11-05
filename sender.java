@@ -24,7 +24,7 @@ public class sender{
 			timeout = Integer.parseInt(args[5]);
 			
 			
-			DatagramSocket socket = new DatagramSocket();
+			DatagramSocket socket = new DatagramSocket(null);
 			socket.bind(new InetSocketAddress(rHost, sPort));
 			socket.setSoTimeout(timeout);
 			DatagramPacket packet = new DatagramPacket(buf, 1024);
