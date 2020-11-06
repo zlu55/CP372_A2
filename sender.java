@@ -38,6 +38,7 @@ public class sender{
 			System.out.println("Port: " + rPort); 
 			System.out.println("ACKs Recieved at: " + sPort);
 
+			long timer = System.currentTimeMillis();
 			int datagramCount = fileData.length()/MDS;  
 			
 			for (int i = 0; i < datagramCount + 2; i++) {
@@ -83,8 +84,9 @@ public class sender{
 					i--;
 				}
 			} 
+			System.out.println("Transfer time: " + (System.currentTimeMillis() - timer) + "ms")
+			socket.close();
 
-		
 		}catch(NumberFormatException e){
 			System.out.println("Incorrect argument types");
 			System.exit(0);
