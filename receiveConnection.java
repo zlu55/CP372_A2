@@ -5,7 +5,7 @@ import java.net.*;
 public class receiveConnection{
 	private DatagramSocket socket;
 	private byte[] buf;
-	private int packetCounter;
+	private int packetCounter, orderPacketCounter;
 	
 	public void start(String IP, int sPort, int rPort, String outFile, boolean reliability, JTextArea displayACK) throws IOException{
 		System.out.println("Receiving...");
@@ -17,8 +17,9 @@ public class receiveConnection{
 		
 		
 		new File(outFile).createNewFile();
-		
-		
+		StringBuilder endData = new StringBuilder();
+		packetCounter = 0;
+		orderPacketCounter = 0;
 		
 		
 		while(true){
@@ -28,19 +29,35 @@ public class receiveConnection{
 				socket.receive(packet);
 				packetCounter++;
 				
-				
 				if(reliability || packetCounter % 10 != 0){
-					String s = new String(packet.getData(), 0, packet.getLength());
-					System.out.println(s);
+					StringBuilder tempData = new StringBuilder();
+					for(int i=0; i<packet.getLength(); i++){
+						if(packet.getData()[i] >= 9){
+							tempData.append((char) packet.getData()[i]);
+						}
+					}
+					endData.append(tempData.toString());
+					
+					int seqNum = packet.getData()[packet.getLength() - 1];
+					displayACK.setText(""+seqNum);
+					
+					if(tempData.toString().contains("/END/")){
+						PrintWriter w = new PrintWriter(new FileWriter(outFile));
+						w.print(endData);
+						w.close();
+						displayACK.setText("Packet count: "+ orderPacketCounter);
+					}else{
+						orderPacketCounter++;
+						displayACK.setText("Packet count: "+ orderPacketCounter);
+					}
+					
+					
+					
+					//Send ACK
+					String ACK = "ACK " + seqNum;
+					socket.send(new DatagramPacket(ACK.getBytes(), ACK.getBytes().length, InetAddress.getByName(IP), sPort));
+					System.out.println("Receiving ACK " + seqNum);
 				}
-				int seqNum = packet.getData()[packet.getLength() - 1];
-				displayACK.setText(""+seqNum);
-				
-				//Send ACK
-				String ACK = "ACK " + seqNum;
-				socket.send(new DatagramPacket(ACK.getBytes(), ACK.getBytes().length, InetAddress.getByName(IP), sPort));
-				System.out.println("Receiving ACK " + seqNum);
-				
 			}catch(IOException e){
 				break;
 			}

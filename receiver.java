@@ -149,7 +149,7 @@ public class receiver{
 			int sPort = Integer.parseInt(senderPortTxt.getText());
 			int rPort = Integer.parseInt(receiverPortTxt.getText());
 			String IP = IPTxtField.getText();
-			String fileName = fileTxt.getText();
+			String fileName = fileTxt.getText() + ".txt";
 
 			if(sPort == 0){
 				outputBox.setText("Please enter sender port number");
