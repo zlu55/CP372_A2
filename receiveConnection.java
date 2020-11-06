@@ -39,19 +39,20 @@ public class receiveConnection{
 					endData.append(tempData.toString());
 					
 					int seqNum = packet.getData()[packet.getLength() - 1];
-					displayACK.setText(""+seqNum);
 					
-					if(tempData.toString().contains("/END/")){
+					
+					if(tempData.toString().contains("\t") && seqNum == 4){
 						PrintWriter w = new PrintWriter(new FileWriter(outFile));
 						w.print(endData);
 						w.close();
-						displayACK.setText("Packet count: "+ orderPacketCounter);
+						displayACK.setText("Packet count: " + orderPacketCounter + "\nFinished");
+						orderPacketCounter = 0;
+						endData = new StringBuilder();
+						System.out.println("Finished");
 					}else{
 						orderPacketCounter++;
-						displayACK.setText("Packet count: "+ orderPacketCounter);
+						displayACK.setText("Packet count: " + orderPacketCounter);
 					}
-					
-					
 					
 					//Send ACK
 					String ACK = "ACK " + seqNum;
@@ -63,14 +64,9 @@ public class receiveConnection{
 			}
 		}
 		
-		socket.close();
 	}
 	
 	public void stop(){
 		socket.close();
 	}
-	
-	
-	
-	
 }

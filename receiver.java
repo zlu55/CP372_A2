@@ -160,12 +160,10 @@ public class receiver{
 			}else if(fileName.equals("")){
 				outputBox.setText("Please enter file name");
 			}else{
-				
 				new SwingWorker<Void, Void>() {
 					@Override
 					public Void doInBackground() {
 						try {
-							//receiverHandler.setInOrderPacketLabel(lblPacketsReceived);
 							rConn.start(IP, sPort, rPort, fileName, reliability, outputBox);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -174,13 +172,10 @@ public class receiver{
 					}
 				}.execute();
 				receiveButton.setText("Receiving...");
-				
 			}
 		}else{
 			receiveButton.setText("Receive");
 			rConn.stop();
 		}
 	}
-	
-	
 }

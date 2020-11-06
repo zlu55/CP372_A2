@@ -64,7 +64,7 @@ public class sender{
 				try{
 					System.out.println("Receiving ACK... ");
 					socket.receive(packet);
-					int ackCount = 0;
+					int ackCount = -1;
 
 					for(byte data : packet.getData()) {
 						String c = String.valueOf((char) data);
@@ -84,7 +84,7 @@ public class sender{
 					i--;
 				}
 			} 
-			System.out.println("Transfer time: " + (System.currentTimeMillis() - timer) + "ms")
+			System.out.println("Transfer time: " + (System.currentTimeMillis() - timer) + "ms");
 			socket.close();
 
 		}catch(NumberFormatException e){
