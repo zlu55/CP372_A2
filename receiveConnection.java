@@ -41,7 +41,7 @@ public class receiveConnection{
 					int seqNum = packet.getData()[packet.getLength() - 1];
 					
 					
-					if(tempData.toString().contains("\t") && seqNum == 4){
+					if(tempData.toString().contains("\r") && seqNum == 5){
 						PrintWriter w = new PrintWriter(new FileWriter(outFile));
 						w.print(endData);
 						w.close();

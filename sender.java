@@ -57,7 +57,7 @@ public class sender{
 					}
 					dataBuff[MDS] = (byte) (i % 2);
 				}else{
-					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+					dataBuff = new byte[]{(byte) '\r', (byte) 5};
 				}
 
 				System.out.println("Sending Datagram...");
@@ -70,11 +70,11 @@ public class sender{
 
 					for(byte data : packet.getData()) {
 						String c = String.valueOf((char) data);
-						if (c.equals("0") || c.equals("1") || c.equals("4")){
+						if (c.equals("0") || c.equals("1") || c.equals("5")){
                             ackCount = Integer.parseInt(c);
 						}
                     }
-					if(ackCount != i % 2 && ackCount != 4){
+					if(ackCount != i % 2 && ackCount != 5){
 						System.out.println("ACK is Invalid, re-sending datagram");
                         i--;
 					} else {
