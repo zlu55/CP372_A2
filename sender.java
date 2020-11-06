@@ -63,10 +63,10 @@ public class sender{
 				try{
 					System.out.println("Receiving ACK... ");
 					socket.receive(packet);
-					int ackCount;
+					int ackCount = 0;
 
 					for(byte data : packet.getData()) {
-						String c = String.valueOf(char) data);
+						String c = String.valueOf((char) data);
 						if (c.equals("0") || c.equals("1") || c.equals("4")){
                             ackCount = Integer.parseInt(c);
 						}
