@@ -57,13 +57,30 @@ public class sender{
 					dataBuff = new byte[]{(byte) '\t', (byte) 4};
 				}
 
-				System.out.print("Sending Datagram");
+				System.out.println("Sending Datagram...");
 				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
 				
 				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount;
 
-				}catch(Exception e){
-
+					for(byte data : packet.getData()) {
+						String c = String.valueOf(char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){
+						System.out.println("ACK is Invalid, re-sending datagram");
+                        i--;
+					} else {
+                        System.out.println("ACK Received");
+                    }
+					
+				}catch (SocketTimeoutException exception) {
+					System.out.println("ACK timed out, re-sending datagram");
+					i--;
 				}
 			} 
 
