@@ -31,7 +31,7 @@ public class sender{
 
 			String fileData = readFile(fileName);
 			DatagramPacket packet = new DatagramPacket(buff, 1024);
-			byte[] dataBuff = new byte[1024];
+			byte[] dataBuff;
 
 			System.out.println("Sending datagram from " + fileName);
 			System.out.println("Address: " + rHost);
@@ -39,12 +39,14 @@ public class sender{
 			System.out.println("ACKs Recieved at: " + sPort);
 
 			long timer = System.currentTimeMillis();
-			int datagramCount = fileData.length()/MDS;  
+			int datagramCount = fileData.length() / MDS;
 			
 			for (int i = 0; i < datagramCount + 2; i++) {
 				if(i < datagramCount + 1) {
 					int endIndex;
-
+					
+					dataBuff = new byte[MDS + 1];
+					
 					if(i == (fileData.length() / MDS)){
 						endIndex = fileData.length();
 					}else{

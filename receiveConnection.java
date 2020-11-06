@@ -53,7 +53,6 @@ public class receiveConnection{
 						orderPacketCounter++;
 						displayACK.setText("Packet count: " + orderPacketCounter);
 					}
-					
 					//Send ACK
 					String ACK = "ACK " + seqNum;
 					socket.send(new DatagramPacket(ACK.getBytes(), ACK.getBytes().length, InetAddress.getByName(IP), sPort));
@@ -63,7 +62,6 @@ public class receiveConnection{
 				break;
 			}
 		}
-		
 	}
 	
 	public void stop(){

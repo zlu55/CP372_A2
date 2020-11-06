@@ -16,3 +16,535 @@ a
  sdffsdf
  sdfsdfs
  sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+test
+a 
+ bunch
+ of 
+ struff
+ 
+ adfasfasf
+ struffafsafsf
+ 
+ asdffsafasf
+ safsafsafs
+ sdfsafsadfsa
+ 
+ 
+ 
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){test
+a 
+ bunch
+ of 
+ struff
+ 
+ adfasfasf
+ struffafsafsf
+ 
+ asdffsafasf
+ safsafsafs
+ sdfsafsadfsa
+ 
+ 
+ 
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){test
+a 
+ bunch
+ of 
+ struff
+ 
+ adfasfasf
+ struffafsafsf
+ 
+ asdffsafasf
+ safsafsafs
+ sdfsafsadfsa
+ 
+ 
+ 
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+ sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+sdffsdf
+ sdfsdfs
+ sdfsdfssdffsdf
+ sdfsdfs
+ sdfsdfs
+
+ sdffsdf
+ sdfsdfs
+ sdfsdfs
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){
+System.out.println("Sending datagram from " + fileName);
+			System.out.println("Address: " + rHost);
+			System.out.println("Port: " + rPort); 
+			System.out.println("ACKs Recieved at: " + sPort);
+
+			long timer = System.currentTimeMillis();
+			int datagramCount = fileData.length() / MDS;
+			
+			for (int i = 0; i < datagramCount + 2; i++) {
+				if(i < datagramCount + 1) {
+					int endIndex;
+					
+					dataBuff = new byte[MDS + 1];
+					
+					if(i == (fileData.length() / MDS)){
+						endIndex = fileData.length();
+					}else{
+						endIndex = MDS * (i + 1);
+					}
+					for(int index = MDS * i; index < endIndex; index++){
+						dataBuff[MDS + index - endIndex] = (byte) fileData.charAt(index);
+					}
+					dataBuff[MDS] = (byte) (i % 2);
+				}else{
+					dataBuff = new byte[]{(byte) '\t', (byte) 4};
+				}
+
+				System.out.println("Sending Datagram...");
+				socket.send(new DatagramPacket(dataBuff, dataBuff.length, InetAddress.getByName(rHost), rPort));
+				
+				try{
+					System.out.println("Receiving ACK... ");
+					socket.receive(packet);
+					int ackCount = -1;
+
+					for(byte data : packet.getData()) {
+						String c = String.valueOf((char) data);
+						if (c.equals("0") || c.equals("1") || c.equals("4")){
+                            ackCount = Integer.parseInt(c);
+						}
+                    }
+					if(ackCount != i % 2 && ackCount != 4){
+					if(ackCount != i % 2 && ackCount != 4){
